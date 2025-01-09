@@ -55,7 +55,7 @@ jobs: #Definim cada job y el sistema que utilitzará amb els pasos
         uses: actions/upload-artifact@v4
         with:
           name: cypress-results
-          path: results.txt # Ruta al archivo
+          path: .   # Ruta al archivo
   
   Add_badge_job:  # Afegeix badge al README.md
     runs-on: ubuntu-latest
