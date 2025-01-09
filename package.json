@@ -6,7 +6,8 @@
     "start": "next start",
     "export": "next export",
     "lint": "next lint",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "action-build": "npx esbuild src/index.js --bundle --platform=node --target=node20 --outfile=dist/index.js"
   },
   "dependencies": {
     "next": "latest",
@@ -15,6 +16,8 @@
   },
   "devDependencies": {
     "cypress": "^9.1.1",
-    "eslint-config-next": "12.0.7"
+    "eslint-config-next": "12.0.7",
+    "@actions/core": "^1.10.0",
+    "esbuild": "^0.19.0"
   }
 }

@@ -1,0 +1,9 @@
+name: "Update README badge"
+description: "Actualitza el README amb un badge segons el resultat dels tests"
+inputs:
+  outcome:
+    description: "Resultat dels tests de Cypress"
+    required: true
+runs:
+  using: "node20"  #gastem 20 si no va cambia a 16
+  main: "dist/index.js"
