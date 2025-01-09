@@ -19854,12 +19854,13 @@ try {
   const readmePath = "README.md";
   const badge = outcome === "success" ? "![Tests Passed](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)" : "![Tests Failed](https://img.shields.io/badge/test-failure-red)";
   let readmeContent = fs.readFileSync(readmePath, "utf8");
-  const badgeSection = "## RESULTAT DELS \xDALTIMS TESTS\n";
-  const updatedContent = `${badgeSection}${badge}
-`;
+  const badgeSection = "<!---Start place for the badge -->";
+  const updatedContent = `${badgeSection}
+${badge}
+<!---End place for the badge -->`;
   if (readmeContent.includes(badgeSection)) {
     readmeContent = readmeContent.replace(
-      new RegExp(`${badgeSection}.*`, "s"),
+      new RegExp(`${badgeSection}.*${badgeSection}`, "s"),
       updatedContent
     );
   } else {
@@ -19867,7 +19868,7 @@ try {
 ${updatedContent}`;
   }
   fs.writeFileSync(readmePath, readmeContent);
-  core.info("README.md actualitzat amb \xE8xit!");
+  core.info("README.md actualizado con \xE9xito!");
 } catch (error) {
   core.setFailed(`Error: ${error.message}`);
 }
