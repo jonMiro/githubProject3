@@ -1,0 +1,27 @@
+name: main_workflow
+
+on:
+  push:
+    branches:
+      - main  # Rama que va a utilitzar els jobs
+
+permissions:
+  contents: write
+
+jobs: #Definim cada job y el sistema que utilitzará amb els pasos
+  Linter_job: #Chequea el codi y ens trau els errors que pot haver
+    runs-on: ubuntu-latest  
+    steps:
+      - name: Checkout codi
+        uses: actions/checkout@v4  # #Clona el codi font per a poder trobar els errors
+
+      - name: Configuració Node.js
+        uses: actions/setup-node@v2  # Configurem nodejs
+        with:
+          node-version: '16'  
+
+      - name: Install dependencies
+        run: npm install  # Instala les dependencies
+
+      - name: Run linter
+        run: npm run lint || exit 1  # Ejecuta el linter y si hi ha error para
